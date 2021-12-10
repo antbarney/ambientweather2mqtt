@@ -29,6 +29,14 @@ export function initialize(): void {
     new Sensor(EntityNames.AQIPM25INDOOR_24HOUR, deviceId, SensorUnit.AQI, undefined, "air-filter"),
   );
   entities.set(
+    EntityNames.AQIPM25,
+    new Sensor(EntityNames.AQIPM25, deviceId, SensorUnit.AQI, undefined, "air-filter"),
+  );
+  entities.set(
+    EntityNames.AQIPM25_24HOUR,
+    new Sensor(EntityNames.AQIPM25_24HOUR, deviceId, SensorUnit.AQI, undefined, "air-filter"),
+  );
+  entities.set(
     EntityNames.BAROMETRICPRESSUREABSOLUTE,
     new Sensor(EntityNames.BAROMETRICPRESSUREABSOLUTE, deviceId, SensorUnit.inHg, DeviceClass.PRESSURE),
   );

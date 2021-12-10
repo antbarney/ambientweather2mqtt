@@ -102,6 +102,8 @@ export function processWeatherData(req: express.Request, res: express.Response):
 
   setDataPayload(EntityNames.AQIPM25INDOOR, +req.query.aqi_pm25_in);
   setDataPayload(EntityNames.AQIPM25INDOOR_24HOUR, +req.query.aqi_pm25_in_24h);
+  setDataPayload(EntityNames.AQIPM25, +req.query.pm25);
+  setDataPayload(EntityNames.AQIPM25_24HOUR, +req.query.pm25_24h);
   setDataPayload(EntityNames.BAROMETRICPRESSUREABSOLUTE, +(req.query.baromabsin ?? req.query.absbaromin));
   setDataPayload(EntityNames.BAROMETRICPRESSURERELATIVE, +(req.query.baromrelin ?? req.query.baromin));
   setDataPayload(EntityNames.BATTERY1, convertBatteryValue(req.query.batt1 as string));
