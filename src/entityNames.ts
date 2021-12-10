@@ -4,6 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 enum EntityNames {
+  AQIPM25INDOOR = "aqi_pm25Indoor",
+  AQIPM25INDOOR_24HOUR = "aqi_pm25Indoor_24hour",
   BAROMETRICPRESSUREABSOLUTE = "barometricPressureAbsolute",
   BAROMETRICPRESSURERELATIVE = "barometricPressureRelative",
   BATTERY1 = "battery1",

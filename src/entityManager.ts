@@ -21,6 +21,14 @@ export function initialize(): void {
   deviceId = process.env.STATION_MAC_ADDRESS?.replace(/:/g, "");
 
   entities.set(
+    EntityNames.AQIPM25INDOOR,
+    new Sensor(EntityNames.AQIPM25INDOOR, deviceId, SensorUnit.AQI, undefined, "air-filter"),
+  );
+  entities.set(
+    EntityNames.AQIPM25INDOOR_24HOUR,
+    new Sensor(EntityNames.AQIPM25INDOOR_24HOUR, deviceId, SensorUnit.AQI, undefined, "air-filter"),
+  );
+  entities.set(
     EntityNames.BAROMETRICPRESSUREABSOLUTE,
     new Sensor(EntityNames.BAROMETRICPRESSUREABSOLUTE, deviceId, SensorUnit.inHg, DeviceClass.PRESSURE),
   );
