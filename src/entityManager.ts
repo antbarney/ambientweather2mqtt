@@ -388,7 +388,7 @@ export async function upgrade(): Promise<void> {
   }
 
   // eslint-disable-next-line deprecation/deprecation
-  await new Sensor(EntityNames.DATE, deviceId).publishRemove();
+  await new Sensor(EntityNames.DATE, deviceId, deviceName).publishRemove();
 }
 
 /**
