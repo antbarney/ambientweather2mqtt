@@ -23,7 +23,7 @@ export default class Entity {
   public discoveryPayload: EntityDiscoveryPayload;
 
   private deviceId: string;
-
+  private deviceName: string;
   /**
    *
    * @param name The name of the sensor.
@@ -32,14 +32,15 @@ export default class Entity {
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
    */
-  constructor(name: string, deviceId: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
+  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
     this.deviceId = deviceId;
+    this.deviceName = deviceName;
 
     this.discoveryPayload = {
       device: {
         identifiers: [`AW_${this.deviceId}`],
         manufacturer: "Ambient Weather",
-        name: "ambientweather2mqtt",
+        name: `${this.deviceName} - a2mqtt`,
         model: "Ambient Weather Station",
       },
       device_class: deviceClass,

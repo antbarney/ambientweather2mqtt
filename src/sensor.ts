@@ -19,8 +19,8 @@ export default class Sensor extends Entity {
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
    */
-  constructor(name: string, deviceId: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
-    super(name, deviceId, unit, deviceClass, icon);
+  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
+    super(name, deviceId, deviceName, unit, deviceClass, icon);
 
     this.discoveryTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/config`;
     this.stateTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/state`;

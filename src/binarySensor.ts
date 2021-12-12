@@ -14,8 +14,8 @@ export default class BinarySensor extends Entity {
    * @param name The name of the sensor.
    * @param deviceId The unique identifier for the parent device that contains this entity.
    */
-  constructor(name: string, deviceId: string) {
-    super(name, deviceId);
+  constructor(name: string, deviceId: string, deviceName: string) {
+    super(name, deviceId, deviceName);
 
     this.discoveryTopic = `homeassistant/binary_sensor/${deviceId}/${this.discoveryPayload.name}/config`;
     this.stateTopic = `homeassistant/binary_sensor/${deviceId}/${this.discoveryPayload.name}/state`;

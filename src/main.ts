@@ -52,6 +52,14 @@ function verifyEnvironmentVariables(): boolean {
     return false;
   }
 
+  if (process.env.STATION_NAME === undefined || process.env.STATION_NAME === "") {
+    log.error(
+      "Main",
+      "The STATION_NAME environment variable isn't set. It must be set to a string value that you want used in Home Assistant.",
+    );
+    return false;
+  }
+
   return true;
 }
 
