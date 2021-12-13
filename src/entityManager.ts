@@ -20,7 +20,7 @@ let initialized = false;
 
 export function initialize(): void {
   deviceId = process.env.STATION_MAC_ADDRESS?.replace(/:/g, "");
-  deviceName = process.env.STATION_NAME;
+  deviceName = `${process.env.STATION_NAME ?? "ambientweather2mqtt"}`;
 
   entities.set(
     EntityNames.AQIPM25INDOOR,

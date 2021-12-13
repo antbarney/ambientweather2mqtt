@@ -40,12 +40,12 @@ export default class Entity {
       device: {
         identifiers: [`AW_${this.deviceId}`],
         manufacturer: "Ambient Weather",
-        name: `${this.deviceName} - a2mqtt`,
+        name: `${this.deviceName}`,
         model: "Ambient Weather Station",
       },
       device_class: deviceClass,
       icon: icon ? `mdi:${icon}` : undefined,
-      name: name,
+      name: `${deviceName}_${name}`,
       unique_id: `${this.deviceId ?? "AW"}_${name}`,
       unit_of_measurement: unit,
     } as EntityDiscoveryPayload;
