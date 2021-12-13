@@ -45,7 +45,7 @@ export default class Entity {
       },
       device_class: deviceClass,
       icon: icon ? `mdi:${icon}` : undefined,
-      name: `${deviceName}_${name}`,
+      name: `${deviceName.toLocaleLowerCase()}_${name}`,
       unique_id: `${this.deviceId ?? "AW"}_${name}`,
       unit_of_measurement: unit,
     } as EntityDiscoveryPayload;
