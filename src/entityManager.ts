@@ -196,6 +196,10 @@ export function initialize(): void {
     EntityNames.RAINWEEKLY,
     new Sensor(EntityNames.RAINWEEKLY, deviceId, deviceName, SensorUnit.inches, undefined, "weather-pouring"),
   );
+  entities.set(
+    EntityNames.RAINYEARLY,
+    new Sensor(EntityNames.RAINYEARLY, deviceId, deviceName, SensorUnit.inches, undefined, "weather-pouring"),
+  );
   entities.set(EntityNames.RELAY1, new BinarySensor(EntityNames.RELAY1, deviceId, deviceName));
   entities.set(EntityNames.RELAY10, new BinarySensor(EntityNames.RELAY10, deviceId, deviceName));
   entities.set(EntityNames.RELAY2, new BinarySensor(EntityNames.RELAY2, deviceId, deviceName));
