@@ -1,7 +1,5 @@
 # ambientweather2mqtt
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/danecreekphotography/ambientweather2mqtt/)
-
 This package listens for local data from Ambient Weather stations (such as the WS-2902C) and converts the incoming data to MQTT events. The sensor data is published with auto-discovery so they show up automatically as sensors in Home Assistant.
 
 The following Ambient Weather station models are confirmed to work:
@@ -33,9 +31,17 @@ If the server starts up successfully you will see log messages like this:
 2021-06-30T05:59:56-07:00 [Web server] Listening at http://localhost:8080
 ```
 
+### Setting up HomeAssistant Addon (only for non-native Docker installs)
+
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fneilenns%2Fambientweather2mqtt)
+
+**Installation**
+
+Add `https://github.com/neilenns/ambientweather2mqtt` as an add-on repository.
+
 ### Configuring the weather station
 
-Your Ambient Weather station must be configured to send data to the local service. This configuration is done through the [`awnet`](https://apps.apple.com/us/app/awnet/id1341994564) app, and currently can only be configured using the app on iOS devices (the setting is not available in the Android app).
+Your Ambient Weather station must be configured to send data to the local service. This configuration is done through the [`awnet`](https://apps.apple.com/us/app/awnet/id1341994564) app. It is recommended to use an iOS device, but some have found success using an Android device as well.
 
 1. Run the `awnet` app and connect to your weather station.
 2. Tap `next` through the configuration screens until you get to the `Customized`
@@ -51,7 +57,7 @@ Your Ambient Weather station must be configured to send data to the local servic
 | Path                  | `/data/?`                                                       | **It is very important this field is entered exactly as shown. Be very careful to include the `?` at the end otherwise nothing will work.**                  |
 | Station ID            | Any non-blank value                                             | Only required when the protocol is set to Weather Underground. The actual value provided doesn't matter but something must be in the field.                  |
 | Station Key           | Any non-blank value                                             | Only required when the protocol is set to Weather Underground. The actual value provided doesn't matter but something must be in the field.                  |
-| Port                  | The port specified in the `.env` file                           | The sample `.env` file provided uses `8132` so unless you changed it to something else you should enter `8132` here.                                         |
+| Port                  | The port specified in the `.env` file                           | If running in Home Assistant this should be set to `7000`. If running the standalone Docker image the sample `.env` file provided uses `8132` so unless you changed it to something else you should enter `8132` here. |
 | Upload Interval       | The frequency to send the data.                                 | `30` is a reasonable value to start with.                                                                                                                    |
 
 Here is what a properly configured weather station looks like:
@@ -85,7 +91,7 @@ Check the following:
 The following sensors are supported. Note that weather stations will only report the subset of these they support.
 
 | Name                          | Description                                                    | Ambient Weather | Weather Underground | Unit    |
-| ----------------------------- | -------------------------------------------------------------- | --------------- | ------------------- | ------- | --- | ------------- | ----------------------------- | --- | --- | ------- |
+| - | - | - | - | - | 
 | barometricPressureAbsolute    | Absolute barometric pressure                                   | Yes             | Yes                 | inHg    |
 | barometricPressureRelative    | Relative barometric pressure                                   | Yes             | Yes                 | inHg    |
 | battery1..10                  | State of battery, `0` for not ok, `100` for ok                 | Yes             | No                  | percent |
@@ -94,7 +100,8 @@ The following sensors are supported. Note that weather stations will only report
 | batteryPM25Ok                 | State of the PM25 device battery, `0` for not ok, `100` for ok | Yes             | No                  | percent |
 | co2                           | CO2 meter reading                                              | Yes             | No                  | ppm     |
 | dewpoint                      | Outdoor dewpoint temperature                                   | No              | Yes                 | °F      |
-| eventDate                     | Date of the latest measurements                                | Yes             | Yes                 | date    |     | humidity1..10 | Humidity sensors 1 through 10 | Yes | No  | percent |
+| eventDate                     | Date of the latest measurements                                | Yes             | Yes                 | date    |
+| humidity1..10                 | Humidity sensors 1 through 10                                  | Yes             | No                  | percent |
 | humidityIndoor                | Indoor humidity                                                | Yes             | Yes                 | percent |
 | humidityOutdoor               | Outdoor humidity                                               | Yes             | Yes                 | percent |
 | pm25                          | PM2.5 air quality                                              | Yes             | No                  | µg/m^3  |
@@ -104,7 +111,7 @@ The following sensors are supported. Note that weather stations will only report
 | rain24Hour                    | 24 hour rain                                                   | Yes             | No                  | inches  |
 | rainDaily                     | Daily rain                                                     | Yes             | Yes                 | inches  |
 | rainEvent                     | Event rain                                                     | Yes             | No                  | inches  |
-| rainHourly                    | Hourly rain                                                    | Yes             | Yes                 | inches  |
+| rainHourly                    | Hourly rain                                                    | Yes             | Yes                 | in/h    |
 | rainMonthly                   | Monthly rain                                                   | Yes             | Yes                 | inches  |
 | rainTotal                     | Total rain since last factory reset                            | Yes             | No                  | inches  |
 | rainWeekly                    | Weekly rain                                                    | Yes             | Yes                 | inches  |

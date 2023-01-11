@@ -1,6 +1,6 @@
 {
   "name": "ambientweather2mqtt",
-  "version": "2.0.0",
+  "version": "4.0.0",
   "description": "Converts Ambient Weather data to MQTT events",
   "main": "dist/main.js",
   "files": [
@@ -46,10 +46,10 @@
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-notice": "^0.9.10",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "http-terminator": "^3.0.0",
-    "markdownlint": "^0.23.1",
-    "markdownlint-cli": "^0.27.1",
+    "markdownlint": "^0.26.2",
+    "markdownlint-cli": "^0.32.1",
     "moment": "^2.29.2",
     "prettier": "^2.3.1"
   }

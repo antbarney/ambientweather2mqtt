@@ -182,7 +182,7 @@ export function initialize(): void {
   );
   entities.set(
     EntityNames.RAINHOURLY,
-    new Sensor(EntityNames.RAINHOURLY, deviceId, deviceName, SensorUnit.inches, undefined, "weather-pouring"),
+    new Sensor(EntityNames.RAINHOURLY, deviceId, deviceName, SensorUnit.inchesPerHour, undefined, "weather-pouring"),
   );
   entities.set(
     EntityNames.RAINMONTHLY,

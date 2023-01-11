@@ -3,19 +3,10 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-enum SensorUnit {
-  AQI = "AQI",
-  F = "°F",
-  illuminance = "lx",
-  inches = "in",
-  inchesPerHour = "in/h",
-  inHg = "inHg",
-  milesPerHour = "mph",
-  particulate = "µg/m^3",
-  partsPerMillion = "ppm",
-  percent = "%",
-  radiation = "W/m^2",
-  timestamp = "timestamp",
+enum StateClass {
+  MEASUREMENT = "measurement",
+  TOTAL = "total",
+  TOTAL_INCREASING = "total_increasing"
 }
 
-export default SensorUnit;
+export default StateClass;
