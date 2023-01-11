@@ -5,7 +5,7 @@
 
 enum SensorUnit {
   AQI = "AQI",
-  F = "˚F",
+  F = "°F",
   illuminance = "lx",
   inches = "in",
   inHg = "inHg",
