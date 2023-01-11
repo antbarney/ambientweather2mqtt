@@ -64,5 +64,8 @@
     "winddirection",
     "windgustmph",
     "windspeedmph"
-  ]
+  ],
+  "files.associations": {
+    "*.yaml": "home-assistant"
+  }
 }
