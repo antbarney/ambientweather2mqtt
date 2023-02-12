@@ -11,6 +11,7 @@ import * as log from "./log";
 import Sensor from "./sensor";
 import SensorUnit from "./sensorUnit";
 import BinarySensor from "./binarySensor";
+import StateClass from "./stateClass";
 
 export const entities = new Map<string, Entity>();
 
@@ -102,7 +103,7 @@ export function initialize(): void {
   entities.set(EntityNames.DEWPOINT, new Sensor(EntityNames.DEWPOINT, deviceId, deviceName, SensorUnit.F, DeviceClass.TEMPERATURE));
   entities.set(
     EntityNames.EVENTDATE,
-    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, undefined, DeviceClass.TIMESTAMP, "clock-outline", undefined),
+    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, undefined, DeviceClass.TIMESTAMP, "clock-outline", StateClass.DISABLED),
   );
   entities.set(
     EntityNames.HUMIDITY1,

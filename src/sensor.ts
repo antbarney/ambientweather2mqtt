@@ -23,11 +23,18 @@ export default class Sensor extends Entity {
    * @param stateClass StateClass of the sensor. Optional.
    */
   constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string, stateClass?: StateClass) {
-    super(name, deviceId, deviceName, unit, deviceClass, icon, stateClass);
+    super(name, deviceId, deviceName, unit, deviceClass, icon);
 
     this.discoveryTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/config`;
     this.stateTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/state`;
 
     this.discoveryPayload.state_topic = this.stateTopic;
+
+    if (stateClass == StateClass.DISABLED) {
+      this.discoveryPayload.state_class = undefined;
+    }
+    else if (stateClass !== undefined) {
+      this.discoveryPayload.state_class = stateClass;
+    }
   }
 }

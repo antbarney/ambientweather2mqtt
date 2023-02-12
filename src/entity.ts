@@ -35,7 +35,7 @@ export default class Entity {
    * @param icon The mdi icon for the sensor. Optional.
    * @param stateClass StateClass of the sensor. Defaults to StateClass.MEASUREMENT
    */
-  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string, stateClass: StateClass = StateClass.MEASUREMENT) {
+  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
     this.deviceId = deviceId;
     this.deviceName = deviceName;
     this.discoveryPayload = {
@@ -46,7 +46,7 @@ export default class Entity {
         model: "Ambient Weather Station",
       },
       device_class: deviceClass,
-      state_class: stateClass,
+      state_class: StateClass.MEASUREMENT,
       icon: icon ? `mdi:${icon}` : undefined,
       name: `${deviceName.toLocaleLowerCase()}_${name}`,
       unique_id: `${this.deviceId ?? "AW"}_${name}`,
