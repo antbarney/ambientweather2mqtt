@@ -15,6 +15,7 @@ export default class Sensor extends Entity {
    *
    * @param name The name of the sensor.
    * @param deviceId The unique identifier for the parent device that contains this entity.
+   * @param deviceName friendly name of the device for mqtt publications.
    * @param unit The unit of measurement for the sensor. Optional.
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
