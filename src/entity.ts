@@ -29,47 +29,30 @@ export default class Entity {
    *
    * @param name The name of the sensor.
    * @param deviceId The unique identifier for the parent device that contains this entity.
+   * @param deviceName friendly name of the device for mqtt publications.
    * @param unit The unit of measurement for the sensor. Optional.
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
+   * @param stateClass StateClass of the sensor. Defaults to StateClass.MEASUREMENT
    */
-  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
+  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string, stateClass: StateClass = StateClass.MEASUREMENT) {
     this.deviceId = deviceId;
     this.deviceName = deviceName;
-
-    if (deviceClass == DeviceClass.TIMESTAMP) {
-      this.discoveryPayload = {
-        device: {
-          identifiers: [`AW_${this.deviceId}`],
-          manufacturer: "Ambient Weather",
-          name: `${this.deviceName}`,
-          model: "Ambient Weather Station",
-        },
-        device_class: deviceClass,
-        icon: icon ? `mdi:${icon}` : undefined,
-        name: `${deviceName.toLocaleLowerCase()}_${name}`,
-        unique_id: `${this.deviceId ?? "AW"}_${name}`,
-        unit_of_measurement: unit,
-      } as EntityDiscoveryPayload;
-    }
-    else {
-      this.discoveryPayload = {
-        device: {
-          identifiers: [`AW_${this.deviceId}`],
-          manufacturer: "Ambient Weather",
-          name: `${this.deviceName}`,
-          model: "Ambient Weather Station",
-        },
-        device_class: deviceClass,
-        state_class: StateClass.MEASUREMENT,
-        icon: icon ? `mdi:${icon}` : undefined,
-        name: `${deviceName.toLocaleLowerCase()}_${name}`,
-        unique_id: `${this.deviceId ?? "AW"}_${name}`,
-        unit_of_measurement: unit,
-      } as EntityDiscoveryPayload;
-    }
+    this.discoveryPayload = {
+      device: {
+        identifiers: [`AW_${this.deviceId}`],
+        manufacturer: "Ambient Weather",
+        name: `${this.deviceName}`,
+        model: "Ambient Weather Station",
+      },
+      device_class: deviceClass,
+      state_class: stateClass,
+      icon: icon ? `mdi:${icon}` : undefined,
+      name: `${deviceName.toLocaleLowerCase()}_${name}`,
+      unique_id: `${this.deviceId ?? "AW"}_${name}`,
+      unit_of_measurement: unit,
+    } as EntityDiscoveryPayload;
   }
-
   /**
    * Publishes the sensor discovery event to MQTT if a valid value is stored for the sensor.
    */
@@ -104,10 +87,10 @@ export default class Entity {
       await this.publishDiscovery();
     }
 
-    // Dates are obnoxious. They must explicitly be written out using toUTCString()
+    // Dates are obnoxious. They must explicitly be written out using toUTCString() -- Switching to toISOString so HA can properly import it as timestamp value. Format looks like: "2017-06-14T07:00:00.000Z"
     // otherwise the local system timezone gets added to the base date.
     if (this.value instanceof Date) {
-      return mqttManager.publish(this.stateTopic, this.value.toUTCString());
+      return mqttManager.publish(this.stateTopic, this.value.toISOString());
     }
 
     return mqttManager.publish(this.stateTopic, this.value.toString());
