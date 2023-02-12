@@ -37,20 +37,37 @@ export default class Entity {
     this.deviceId = deviceId;
     this.deviceName = deviceName;
 
-    this.discoveryPayload = {
-      device: {
-        identifiers: [`AW_${this.deviceId}`],
-        manufacturer: "Ambient Weather",
-        name: `${this.deviceName}`,
-        model: "Ambient Weather Station",
-      },
-      device_class: deviceClass,
-      state_class: StateClass.MEASUREMENT,
-      icon: icon ? `mdi:${icon}` : undefined,
-      name: `${deviceName.toLocaleLowerCase()}_${name}`,
-      unique_id: `${this.deviceId ?? "AW"}_${name}`,
-      unit_of_measurement: unit,
-    } as EntityDiscoveryPayload;
+    if (deviceClass == DeviceClass.TIMESTAMP) {
+      this.discoveryPayload = {
+        device: {
+          identifiers: [`AW_${this.deviceId}`],
+          manufacturer: "Ambient Weather",
+          name: `${this.deviceName}`,
+          model: "Ambient Weather Station",
+        },
+        device_class: deviceClass,
+        state_class: StateClass.MEASUREMENT,
+        icon: icon ? `mdi:${icon}` : undefined,
+        name: `${deviceName.toLocaleLowerCase()}_${name}`,
+        unique_id: `${this.deviceId ?? "AW"}_${name}`,
+        unit_of_measurement: unit,
+      } as EntityDiscoveryPayload;
+    }
+    else {
+      this.discoveryPayload = {
+        device: {
+          identifiers: [`AW_${this.deviceId}`],
+          manufacturer: "Ambient Weather",
+          name: `${this.deviceName}`,
+          model: "Ambient Weather Station",
+        },
+        device_class: deviceClass,
+        icon: icon ? `mdi:${icon}` : undefined,
+        name: `${deviceName.toLocaleLowerCase()}_${name}`,
+        unique_id: `${this.deviceId ?? "AW"}_${name}`,
+        unit_of_measurement: unit,
+      } as EntityDiscoveryPayload;
+    }
   }
 
   /**
