@@ -17,10 +17,10 @@ export default class Sensor extends Entity {
    * @param name The name of the sensor.
    * @param deviceId The unique identifier for the parent device that contains this entity.
    * @param deviceName friendly name of the device for mqtt publications.
-   * @param stateClass StateClass of the sensor. Optional.
    * @param unit The unit of measurement for the sensor. Optional.
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
+   * @param stateClass StateClass of the sensor. Optional.
    */
   constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string, stateClass?: StateClass) {
     super(name, deviceId, deviceName, unit, deviceClass, icon, stateClass);
