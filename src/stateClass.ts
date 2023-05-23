@@ -6,8 +6,7 @@
 enum StateClass {
   MEASUREMENT = "measurement",
   TOTAL = "total",
-  TOTAL_INCREASING = "total_increasing",
-  DISABLED = "disabled"
+  TOTAL_INCREASING = "total_increasing"
 }
 
 export default StateClass;
