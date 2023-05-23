@@ -104,10 +104,10 @@ export function initialize(): void {
   entities.set(
     EntityNames.EVENTDATE,
 <<<<<<< HEAD
-    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, undefined, DeviceClass.TIMESTAMP, "clock-outline", StateClass.DISABLED),
+    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, SensorUnit.timestamp, DeviceClass.TIMESTAMP, "clock-outline"),
 =======
-    new Sensor(EntityNames.EVENTDATE, deviceId, SensorUnit.timestamp, DeviceClass.TIMESTAMP, "clock-outline"),
->>>>>>> b2ac3b3 (Set the device class for EVENTDATE to TIMESTAMP (#100))
+    new Sensor(EntityNames.EVENTDATE, deviceId, SensorUnit.none, DeviceClass.TIMESTAMP, "clock-outline"),
+>>>>>>> 749c97e (Set unit of measurement to none (#101))
   );
   entities.set(
     EntityNames.HUMIDITY1,
