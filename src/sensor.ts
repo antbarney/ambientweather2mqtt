@@ -6,7 +6,7 @@
 import DeviceClass from "./deviceClass";
 import Entity from "./entity";
 import SensorUnit from "./sensorUnit";
-import StateClass from "./stateClass";
+import TopicRoot from "./topicRoot";
 
 /**
  * Represents a Home Assistant sensor entity
@@ -22,19 +22,12 @@ export default class Sensor extends Entity {
    * @param icon The mdi icon for the sensor. Optional.
    * @param stateClass StateClass of the sensor. Optional.
    */
-  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string, stateClass?: StateClass) {
+  constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
     super(name, deviceId, deviceName, unit, deviceClass, icon);
 
-    this.discoveryTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/config`;
-    this.stateTopic = `homeassistant/sensor/${deviceId}/${this.discoveryPayload.name}/state`;
+    this.discoveryTopic = `${TopicRoot}/sensor/${deviceId}/${this.discoveryPayload.name}/config`;
+    this.stateTopic = `${TopicRoot}/sensor/${deviceId}/${this.discoveryPayload.name}/state`;
 
     this.discoveryPayload.state_topic = this.stateTopic;
-
-    if (stateClass == StateClass.DISABLED) {
-      this.discoveryPayload.state_class = undefined;
-    }
-    else if (stateClass !== undefined) {
-      this.discoveryPayload.state_class = stateClass;
-    }
   }
 }
