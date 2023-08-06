@@ -20,7 +20,6 @@ export default class Sensor extends Entity {
    * @param unit The unit of measurement for the sensor. Optional.
    * @param deviceClass The device class for the sensor. Optional.
    * @param icon The mdi icon for the sensor. Optional.
-   * @param stateClass StateClass of the sensor. Optional.
    */
   constructor(name: string, deviceId: string, deviceName: string, unit?: SensorUnit, deviceClass?: DeviceClass, icon?: string) {
     super(name, deviceId, deviceName, unit, deviceClass, icon);
