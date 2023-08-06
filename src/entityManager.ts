@@ -103,7 +103,7 @@ export function initialize(): void {
   entities.set(EntityNames.DEWPOINT, new Sensor(EntityNames.DEWPOINT, deviceId, deviceName, SensorUnit.F, DeviceClass.TEMPERATURE));
   entities.set(
     EntityNames.EVENTDATE,
-    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, undefined, DeviceClass.TIMESTAMP, "clock-outline"),
+    new Sensor(EntityNames.EVENTDATE, deviceId, deviceName, undefined, DeviceClass.TIMESTAMP, "clock-outline", StateClass.DISABLED),
   );
   entities.set(
     EntityNames.HUMIDITY1,
