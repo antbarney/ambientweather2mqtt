@@ -48,6 +48,7 @@ export default class Entity {
     icon?: string,
     entityCategory?: EntityCategory,
     retain = false,
+    stationName = env().PUBLISH_NAME,
   ) {
     this.deviceId = deviceId;
     this.retain = retain;
@@ -56,7 +57,7 @@ export default class Entity {
       device: {
         identifiers: [`AW_${this.deviceId}`],
         manufacturer: "Ambient Weather",
-        name: "ambientweather2mqtt",
+        name: stationName,
         model: "Ambient Weather Station",
       },
       device_class: deviceClass,
