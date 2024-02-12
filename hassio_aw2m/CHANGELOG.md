@@ -1,5 +1,10 @@
 # Version
 
+## 4.6.1
+
+* Adds AQI indoor sensor from WS-5000 Station.
+* Adds support to set the Default Name for discovery.
+
 ## 4.6.0
 
 * Add retain flag for `lastRain` sensor and new environment variable for enabling retain of all sensor values. (Fixes [#152](https://github.com/neilenns/ambientweather2mqtt/issues/152))

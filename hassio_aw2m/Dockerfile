@@ -1,4 +1,4 @@
-FROM ghcr.io/neilenns/ambientweather2mqtt:latest
+FROM ghcr.io/antbarney/ambientweather2mqtt:latest
 ENV PORT=8132
 
 USER root
